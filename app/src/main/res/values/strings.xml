@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">program</string>
+    <string name="behavior_footer">com.zll.program.widget.behavior.FooterBehavior</string>
+    <string name="behavior_scale_fab">com.zll.program.widget.behavior.FabScaleBehavior</string>
+</resources>

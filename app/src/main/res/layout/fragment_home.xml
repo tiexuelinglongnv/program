@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="homeviewmodel"
+            type="com.zll.program.ui.home.HomeViewModel" />
+    </data>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/fragment_home_tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_56"
+            android:background="@color/cffffff"
+            app:tl_indicator_color="@color/c0244a6"
+            app:tl_indicator_corner_radius="@dimen/dp_2"
+            app:tl_indicator_height="@dimen/dp_4"
+            app:tl_indicator_margin_bottom="@dimen/dp_4"
+            app:tl_indicator_width="@dimen/dp_32"
+            app:tl_tab_space_equal="true"
+            app:tl_textBold="SELECT"
+            app:tl_textSelectColor="@color/c0244a6"
+            app:tl_textUnselectColor="@color/c000000"
+            app:tl_textsize="@dimen/sp_14" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/fragment_home_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp_14"
+            android:background="@color/cffffff" />
+    </LinearLayout>
+
+</layout>

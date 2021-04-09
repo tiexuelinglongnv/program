@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="mainviewmodel"
+            type="com.zll.program.ui.main.MainViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+        <!--Toolbar-->
+        <include
+            android:id="@+id/main_toolbar"
+            layout="@layout/main_toolbar" />
+        <!--DrawerLayout-->
+        <include
+            android:id="@+id/main_drawerlayout"
+            layout="@layout/main_drawerlayout" />
+    </LinearLayout>
+
+</layout>
