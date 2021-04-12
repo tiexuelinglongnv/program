@@ -4,7 +4,7 @@
     <data>
 
         <variable
-            name="topviewmodel"
+            name="viewModel"
             type="com.zll.program.ui.top.TopViewModel" />
     </data>
 
@@ -22,6 +22,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="top"
+            android:onClick="@{viewModel.loginOnClick}"
             android:textSize="20sp" />
     </LinearLayout>
 

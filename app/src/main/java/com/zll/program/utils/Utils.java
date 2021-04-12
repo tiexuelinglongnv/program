@@ -35,6 +35,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import me.goldze.mvvmhabit.utils.KLog;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
 public class Utils {
@@ -147,7 +148,7 @@ public class Utils {
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
             versionName = pi.versionName;
         } catch (Exception e) {
-            Log.e("VersionInfo", "Exception", e);
+            KLog.e("VersionInfo"+ "Exception", e);
         }
         return versionName;
     }

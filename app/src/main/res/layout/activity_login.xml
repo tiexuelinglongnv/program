@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:binding="http://schemas.android.com/apk/res-auto">
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+   >
 
     <data>
 
@@ -15,21 +16,20 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
-
-        <LinearLayout
+        <com.zll.program.widget.actionbar.TitleBar
+            android:id="@+id/titlebar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:src="@mipmap/delete"
-                binding:onClickCommand="@{loginviewmodel.finish}" />
-        </LinearLayout>
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="5dp"
+            android:background="@color/c0244a6"
+            binding:tb_barHeight="65dp"
+            binding:tb_dividerColor="@color/c299EE3"
+            binding:tb_leftImageResource="@mipmap/xui_ic_return_back"
+            binding:tb_leftText="回退"
+            binding:tb_sideTextPadding="20dp"
+            binding:tb_actionPadding="20dp"
+            binding:tb_subTitleText="这是副标题"
+            binding:tb_titleText="这是一个Title" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -124,7 +124,6 @@
             <TextView
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:clickable="@{loginviewmodel.countdownclickable}"
                 android:text="@={loginviewmodel.countdown}"
                 android:textColor="#FF873C"
                 android:textSize="12sp"
@@ -150,13 +149,12 @@
             android:layout_marginTop="43dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/bg_startup_dialog_unclick_button"
-            android:clickable="@{loginviewmodel.uc.isClick}"
             android:gravity="center"
             android:text="登录/注册"
             android:textColor="#1A1A1A"
             android:textSize="16sp"
             android:textStyle="bold"
-            binding:onClickCommand="@{loginviewmodel.login}" />
+            android:onClick="@{loginviewmodel.login}" />
 
         <View
             android:layout_width="match_parent"

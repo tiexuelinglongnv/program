@@ -9,7 +9,6 @@ public class BaseBean<T> {
      * timeOut : false
      */
 
-    private boolean success;
     private int Code;
     private T Data;
     private boolean timeOut;
@@ -46,13 +45,7 @@ public class BaseBean<T> {
 
 
 
-    public boolean isSuccess() {
-        return success;
-    }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
 
     public T getData() {
         return Data;

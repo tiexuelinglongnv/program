@@ -40,6 +40,5 @@ public class MainViewModel extends MyBaseViewModel {
         public UIChangeObservable() {
         }
     }
-    public ObservableField<String> drawerlayout_click = new ObservableField<>(null);
 
 }

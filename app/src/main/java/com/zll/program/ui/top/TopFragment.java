@@ -39,7 +39,7 @@ public class TopFragment extends BaseFragment<FragmentTopBinding, TopViewModel> 
 
     @Override
     public int initVariableId() {
-        return BR.topviewmodel;
+        return BR.viewModel;
     }
 
     @Override

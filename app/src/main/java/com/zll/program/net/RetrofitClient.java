@@ -2,12 +2,10 @@ package com.zll.program.net;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.zll.program.BuildConfig;
-import com.zll.program.utils.UserPreference;
 
 import java.io.File;
 import java.lang.reflect.Proxy;
@@ -18,18 +16,13 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import me.goldze.mvvmhabit.http.cookie.CookieJarImpl;
-import me.goldze.mvvmhabit.http.cookie.store.PersistentCookieStore;
 import me.goldze.mvvmhabit.http.interceptor.BaseInterceptor;
 import me.goldze.mvvmhabit.http.interceptor.CacheInterceptor;
-import me.goldze.mvvmhabit.http.interceptor.logging.Level;
-import me.goldze.mvvmhabit.http.interceptor.logging.LoggingInterceptor;
 import me.goldze.mvvmhabit.utils.KLog;
 import me.goldze.mvvmhabit.utils.Utils;
 import okhttp3.Cache;
 import okhttp3.ConnectionPool;
 import okhttp3.OkHttpClient;
-import okhttp3.internal.platform.Platform;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -104,7 +97,7 @@ public class RetrofitClient implements IGlobalManager {
                 .addInterceptor(new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                Log.i("RetrofitClient","HttpLoggingInterceptor>>>  " + message);
+                KLog.i("RetrofitClient","HttpLoggingInterceptor>>>  " + message);
             }
         }).setLevel(HttpLoggingInterceptor.Level.BASIC).setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE))
                 .build();;

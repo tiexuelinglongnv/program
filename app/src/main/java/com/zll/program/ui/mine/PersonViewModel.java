@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
+import me.goldze.mvvmhabit.utils.KLog;
 
 /**
  * @author zll
@@ -30,6 +31,7 @@ public class PersonViewModel extends BaseViewModel {
         @Override
         public void call() {
             if (!TextUtils.isEmpty(str)) {
+                KLog.i("============"+gotomain);
                 startActivity(MainActivity.class);
             }
         }

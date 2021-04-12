@@ -23,27 +23,32 @@ import me.goldze.mvvmhabit.base.BaseActivity;
  * @chang time
  * @class describe
  */
-public abstract class MyBaseActivity<V extends ViewDataBinding, VM extends MyBaseViewModel> extends BaseActivity<V,VM> {
-    public void changebarColor(int color){
+public abstract class MyBaseActivity<V extends ViewDataBinding, VM extends MyBaseViewModel> extends BaseActivity<V, VM> {
+    public void changebarColor(int color) {
         StatusBarUtil.setStatusBarColor(this, color);
     }
-    public void statusBarLightMode(){
+
+    public void statusBarLightMode() {
         StatusBarUtil.statusBarLightMode(this);
     }
+
     //需要先调用透明，在调用改变字体颜色，才能保证及透明又改变颜色
-    public void setbarfull(){
+    public void setbarfull() {
         StatusBarUtil.setStatusBarFullTransparent(this);
     }
+
     private MyProgressDialog progressDialog;
+
     @Override
-    public void onCreate(Bundle savedInstanceState ) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         permissions();
     }
-    public void permissions(){
-        RxPermissions rxPermissions =new RxPermissions(this);
+
+    public void permissions() {
+        RxPermissions rxPermissions = new RxPermissions(this);
         rxPermissions.requestEach(Manifest.permission.CAMERA,
                 Manifest.permission.READ_PHONE_STATE,
                 Manifest.permission.ACCESS_NETWORK_STATE,
@@ -63,10 +68,13 @@ public abstract class MyBaseActivity<V extends ViewDataBinding, VM extends MyBas
                 });
     }
 
+
+
     @Override
     public void initData() {
         super.initData();
     }
+
     @Override
     public void showDialog(String msg) {
         if (msg == null) {
@@ -76,16 +84,17 @@ public abstract class MyBaseActivity<V extends ViewDataBinding, VM extends MyBas
         if (progressDialog == null) {
             progressDialog = new MyProgressDialog(this);
         }
-        if(progressDialog.isShowing()){
+        if (progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
         progressDialog.show();
         progressDialog.setMessage(msg);
 
     }
+
     @Override
     public void dismissDialog() {
-        if ( progressDialog != null) {
+        if (progressDialog != null) {
             progressDialog.dismiss();
             progressDialog = null;
         }
@@ -97,9 +106,9 @@ public abstract class MyBaseActivity<V extends ViewDataBinding, VM extends MyBas
         viewModel.ucBaseViewModel.openDialog.observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                if(TextUtils.isEmpty(s)){
+                if (TextUtils.isEmpty(s)) {
                     MyBaseActivity.this.dismissDialog();
-                }else{
+                } else {
                     MyBaseActivity.this.showDialog(s);
                 }
             }

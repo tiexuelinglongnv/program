@@ -3,14 +3,17 @@ package com.zll.program.ui.login;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 
 import com.zll.program.BR;
 import com.zll.program.R;
 import com.zll.program.base.MyBaseActivity;
 import com.zll.program.databinding.ActivityLoginBinding;
 import com.zll.program.utils.Utils;
+import com.zll.program.widget.actionbar.TitleBar;
 
 import androidx.lifecycle.Observer;
+import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
  * @author zll
@@ -37,6 +40,7 @@ public class LoginActivity  extends MyBaseActivity<ActivityLoginBinding,LoginVie
     @Override
     public void initData() {
         super.initData();
+        binding.titlebar.setTitle("登录");
         binding.activityLoginVerification.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -55,6 +59,23 @@ public class LoginActivity  extends MyBaseActivity<ActivityLoginBinding,LoginVie
                 }else{
                     viewModel.uc.isClick.setValue(false);
                 }
+            }
+        });
+        binding.titlebar.setLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showLong("点击返回");
+            }
+        }).setCenterClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.showLong("点击标题");
+
+            }
+        }).addAction(new TitleBar.ImageAction(R.mipmap.delete) {
+            @Override
+            public void performAction(View view) {
+                ToastUtils.showLong("点击更多！");
             }
         });
     }

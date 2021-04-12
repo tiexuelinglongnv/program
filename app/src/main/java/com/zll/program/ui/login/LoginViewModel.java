@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.zll.program.ui.main.MainActivity;
 import com.zll.program.base.BaseBean;
@@ -20,6 +21,7 @@ import androidx.databinding.ObservableField;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
+import me.goldze.mvvmhabit.utils.KLog;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
@@ -66,7 +68,7 @@ public class LoginViewModel extends MyBaseViewModel {
             @Override
             public void success(BaseBean t) {
                 super.success(t);
-                if (t.isSuccess()) {
+                if (t.getCode()==0) {
                     ToastUtils.showShort("验证码已发送");
                     handler.post(runnable);
                 }
@@ -96,7 +98,7 @@ public class LoginViewModel extends MyBaseViewModel {
         }
     };
     //发送验证码结束
-//关闭登录页面
+//关闭登录页面   BindingCommand里面包含防止快速点击
     public BindingCommand finish = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
@@ -107,6 +109,7 @@ public class LoginViewModel extends MyBaseViewModel {
         }
     });
 
+
     //封装一个界面发生改变的观察者
     public UIChangeObservable uc = new UIChangeObservable();
 
@@ -114,14 +117,15 @@ public class LoginViewModel extends MyBaseViewModel {
         //左侧画框是否打开或者关闭
         public SingleLiveEvent<Boolean> isClick = new SingleLiveEvent<>();
     }
-
-
-    public BindingCommand login = new BindingCommand(new BindingAction() {
+    //登录按钮的点击事件  onClick里面不包含防止快速点击
+    public View.OnClickListener login = new View.OnClickListener() {
         @Override
-        public void call() {
+        public void onClick(View v) {
+            KLog.i("============"+login);
             loginByMobile();
         }
-    });
+    };
+
 
     public void loginByMobileSms() {
         if (!Utils.isPhone(phone.get())) {
